@@ -1,0 +1,106 @@
+/* importando fonte INTER do google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* zerando configurações de estilo dos navegadores  */
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #000000;
+    --cor-secundaria: #495057;
+    --cor-terciaria: #adb5bd;
+    --cor-neutra: #f8f9fa;
+    --fonte: "Inter", sans-serif;
+}
+
+body {
+    font-family: var(--fonte);
+}
+
+/* cor do icone da navbar */
+.person {
+    color: var(--cor-principal);
+    font-size: 20px;
+}
+
+/* estilo da logo do projeto */
+.Logo {
+    color: var(--cor-principal);
+    font-family: var(--fonte);
+}
+
+/* estilo da tag nav */
+nav {
+    background-color: var(--cor-neutra) !important;
+}
+
+/* estilo do titulo da página inicial */
+.title-index {
+    font-weight: 700;
+}
+
+/* estilo do span de data */
+#date {
+    color: var(--cor-secundaria);
+    font-weight: 600;
+}
+
+/* estilo do icone dos cards */
+.iconCard {
+    font-size: 30px;
+    color: var(--cor-principal);
+}
+
+/* estilo do titulo do card */
+.tituloCard {
+    color: var(--cor-principal);
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/* estilo da descrição do card principal */
+.descricaoCard {
+    color: var(--cor-secundaria);
+    font-weight: 500;
+}
+
+/* estilo dp card de citação e seus elementos */
+.citacaoCard {
+    color: var(--cor-secundaria);
+    font-weight: 500;
+    font-style: italic;
+    text-align: center;
+}
+
+.autorCard {
+    text-align: center;
+    color: var(--cor-principal);
+}
+
+/* estilos dos elementos do rodapé */
+.titleFooter {
+    text-align: center;
+    color: var(--cor-principal);
+    font-weight: 700;
+}
+
+.linkFooter {
+    color: var(--cor-secundaria);
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.copy {
+    color: var(--cor-secundaria);
+    font-weight: 500;
+    text-align: center;
+}
+
+/* estilo do link da navbar das páginas dos modulos */
+.navPages {
+    color: var(--cor-secundaria);
+    font-weight: 500;
+}
