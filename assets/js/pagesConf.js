@@ -1,13 +1,16 @@
 // puxando o elemnto html que vai ser responsavel por exibir a data
-const data = document.getElementById("date");
+const dataPages = document.getElementById("datePages");
 
 const dataDay = new Date(); //puxa a data atual do momento
 
 //formatdor do estilo de data longa
 const formatador = Intl.DateTimeFormat("pt-BR", {
-    dateStyle: "long",
+    month: "long",
+    year: "numeric"
 });
 
 // escreve na tag escolhida para exibir este elemento
-data.innerHTML = formatador.format(dataDay);
+dataPages.innerHTML = formatador.format(dataDay);
+
+
 

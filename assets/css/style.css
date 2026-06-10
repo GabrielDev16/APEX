@@ -43,7 +43,7 @@ nav {
 }
 
 /* estilo do span de data */
-#date {
+.date {
     color: var(--cor-secundaria);
     font-weight: 600;
 }
