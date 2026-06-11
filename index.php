@@ -50,7 +50,7 @@
                         <i class="bi bi-meta iconCard"></i>
                         <h3 class="mt-2 tituloCard">Metas</h3>
                         <p class="descricaoCard">Acompanhe seus objetivos de curto e longo prazo de forma analítica.</p>
-                        <button type="button" class="btn btn-outline-secondary w-100"><a class="nav-link" href="<?= BASE_URL ?>pages/metas.php">Acessar</a></button>
+                        <button type="button" class="btn l"><a class="nav-link" href="<?= BASE_URL ?>pages/metas.php">Acessar</a></button>
                     </div>
                 </div>
             </div>

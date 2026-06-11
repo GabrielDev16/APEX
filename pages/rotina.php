@@ -22,11 +22,56 @@
 
     <!-- conteudo principal da página de rotinas -->
     <main class="container mt-4 mb-4">
+
         <!-- titulo da página -->
         <h1 class="title-index">Rotina</h1>
 
         <!-- span com mês e ano -->
-        <span class="date" id="datePages"></span>
+        <span class="date mt-2  w-100" id="datePages"></span>
+
+        <!-- botão que ativa o modal de formulario para adcionar dados -->
+        <div class="mt-3">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-secondary w-100" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                <i class="bi bi-plus-circle"></i> Novo Hábito
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- formulario para colocar dados dentro da tabela do banco de dados -->
+                            <form action="<?=BASE_URL?>crud/rotinaCreat.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nome:</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="nome">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Apelido</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name="apelido">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
 
         <!-- exibir teste de tabela para mostrar os nomes que estão em uma tabela -->
         <?php 
@@ -38,13 +83,13 @@
             $resultado = $conn->query($sql);
     ?>
 
-        <table class="table table-striped">
+        <table class="table table-striped mt-4">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Apelido</th>
-                    
+                    <th scope="col" class="text-center">ID</th>
+                    <th scope="col" class="text-center">Nome</th>
+                    <th scope="col" class="text-center">Apelido</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -60,7 +105,7 @@
             </tbody>
         </table>
 
-        
+
     </main>
     <!-- fim conteudo principal da página de rotinas -->
 
