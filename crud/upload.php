@@ -1,31 +1,37 @@
-<?php 
-// conexão com o banco 
+<?php
+// conexão com o banco de dados
+require_once __DIR__ . "/../conf/db.php";
 
-require_once __DIR__ ."../conf/db.php";
-
-// variavies de informação do livro
+// variaveis do formulario
 $titulo = $_POST['titulo'];
 $autor = $_POST['autor'];
 $totalPaginas = $_POST['total_pagina'];
 
-// arquivo de imagem da capa
-$capaImagem = $_FILES['imagem']['name'];
-// move o arquivo para pasta das imagens
-move_uploaded_file($_FILES['imagem']['name'], "../uploads" . $capaImagem);
+// variavel que coleta a imagem - basename remove possivel caminho que vanha com o nome do arquivo
+$capaImagem = basename($_FILES['capa']['name']);
 
-// consulta sql
+// variavel que manda a imagem para a pasta que ela vai ser salva
+$destino = __DIR__ . "/../uploads/" . $capaImagem;
+
+// verificação se a imagem foi enviada para a pasta
+if(!move_uploaded_file($_FILES['capa']['tmp_name'],$destino)){
+    die("falha ao salvar a imagem");
+};
+
+// consulta/comando de execução do sql
 $conn->query("INSERT INTO boks (
     titulo,
     autor,
     total_paginas,
     capa
-)
-VALUES (
+) VALUES (
     '$titulo',
     '$autor',
     $totalPaginas,
     '$capaImagem'
 )");
 
-header("location: ../pages/leitura.php");
+// encaminha novamente para o arquivo de leitura
+header("Location: ../pages/leitura.php");
+exit;
 ?>
