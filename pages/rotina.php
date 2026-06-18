@@ -50,13 +50,18 @@
                             <!-- formulario para colocar dados dentro da tabela do banco de dados -->
                             <form action="<?=BASE_URL?>crud/rotinaCreat.php" method="POST">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Nome:</label>
+                                    <label for="exampleInputEmail1" class="form-label">TITULO:</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         aria-describedby="emailHelp" name="nome">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Apelido</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" name="apelido">
+                                    <label for="descricao" class="form-label">DESCRIÇÃO:</label>
+                                    <textarea name="descricao" class="form-control" id="descricao"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="meta" class="form-label">META:</label>
+                                    <input type="number" class="form-control" id="meta" aria-describedby="emailHelp"
+                                        name="meta">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -73,39 +78,7 @@
         </div>
 
 
-        <!-- exibir teste de tabela para mostrar os nomes que estão em uma tabela -->
-        <?php 
-            
-            // 1. Corrigido o caminho (geralmente é __DIR__ para pegar a pasta atual antes de subir)
-            require_once __DIR__ . "/../conf/db.php"; 
-            
-            $sql = "SELECT * FROM usuarios";
-            $resultado = $conn->query($sql);
-    ?>
-
-        <table class="table table-striped mt-4">
-            <thead>
-                <tr>
-                    <th scope="col" class="text-center">ID</th>
-                    <th scope="col" class="text-center">Nome</th>
-                    <th scope="col" class="text-center">Apelido</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                    while($user_data = mysqli_fetch_assoc($resultado)){
-                        echo"<tr>";
-                        echo"<td>" . $user_data['id'] . "<td>" ;
-                        echo"<td>" . $user_data['nome'] . "<td>" ;
-                        echo"<td>" . $user_data['apelido'] . "<td>" ;
-                        echo"</tr>";
-                    }
-                ?>
-            </tbody>
-        </table>
-
-
+        
     </main>
     <!-- fim conteudo principal da página de rotinas -->
 

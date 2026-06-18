@@ -10,7 +10,7 @@
             <strong class="Logo">APEX</strong>
         </a>
 
-        <a href="<?= BASE_URL ?>confg.php">
+        <a href="#">
             <i class="bi bi-person-circle person"></i>
         </a>
     </div>

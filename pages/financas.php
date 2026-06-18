@@ -1,30 +1,142 @@
-<!-- importando o baseurl para não dar problema nos links -->
-<?php 
-    require_once __DIR__ . "/../conf/url.php";
+<?php
+require_once __DIR__ . "/../conf/url.php";
+require_once __DIR__ . "/../conf/db.php";
+
+$sql = "SELECT * FROM transacoes ORDER BY data_lancamento DESC, id DESC";
+$resultado = mysqli_query($conn, $sql);
+
+$entradas = 0;
+$saidas = 0;
+
+while ($row = mysqli_fetch_assoc($resultado)) {
+    if ($row['tipo'] === 'entrada') {
+        $entradas += (float) $row['valor'];
+    } else {
+        $saidas += (float) $row['valor'];
+    }
+}
+
+$saldo = $entradas - $saidas;
+
+mysqli_data_seek($resultado, 0);
 ?>
 <!doctype html>
-<html lang="PT-br">
-
-<!-- head da página index -->
-    <?php 
-        $title = "Finanças"; // variavel do titulo da página 
-        include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho da página
-    ?>
-<!-- fim do head-->
-
+<html lang="pt-br">
+<?php $title = "Finanças"; include __DIR__ . "/../includes/header.php"; ?>
 <body>
-    <!-- navbar da página -->
-        <?php 
-            include  __DIR__ . "/../includes/navbarPages.php";
-        ?>
-    <!-- fim do navbar da página -->
+<?php include __DIR__ . "/../includes/navbarPages.php"; ?>
 
-    <h1>Página De Finanças</h1>
+<main class="container mt-4 mb-4">
+    <h1 class="title-index">Finanças</h1>
 
+    <div class="row mt-4">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Entradas</h6>
+                    <h3 class="text-success">R$ <?= number_format($entradas, 2, ',', '.') ?></h3>
+                </div>
+            </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Saídas</h6>
+                    <h3 class="text-danger">R$ <?= number_format($saidas, 2, ',', '.') ?></h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Saldo</h6>
+                    <h3 class="text-primary">R$ <?= number_format($saldo, 2, ',', '.') ?></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary w-100 mb-3" data-bs-toggle="modal" data-bs-target="#modalNovo">
+        Novo lançamento
+    </button>
+
+    <div class="modal fade" id="modalNovo" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="<?= BASE_URL ?>crud/financasCRUD.php" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Novo lançamento</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Tipo</label>
+                            <select name="tipo" class="form-select" required>
+                                <option value="entrada">Entrada</option>
+                                <option value="saida">Saída</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Categoria</label>
+                            <input type="text" name="categoria" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descrição</label>
+                            <input type="text" name="descricao" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Valor</label>
+                            <input type="number" step="0.01" name="valor" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Data</label>
+                            <input type="date" name="data_lancamento" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle mt-3">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
+                    <tr>
+                        <td><?= $row['tipo'] ?></td>
+                        <td><?= $row['categoria'] ?></td>
+                        <td><?= $row['descricao'] ?></td>
+                        <td>R$ <?= number_format($row['valor'], 2, ',', '.') ?></td>
+                        <td><?= date('d/m/Y', strtotime($row['data_lancamento'])) ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<?php include __DIR__ . "/../includes/footer.php"; ?>
+<script src="<?= BASE_URL ?>bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

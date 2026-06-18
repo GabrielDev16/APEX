@@ -3,19 +3,19 @@
     require_once __DIR__ . "/../conf/db.php";
 
     //recebe os dados que vem do fomrulario
-    $nome = $_POST['nome'];
-    $apelido = $_POST['apelido'];
+    $titulo = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $meta = $_POST['meta'];
+    
 
     //comando sql que faz a inserção de itens na tabela
-    $sql = "INSERT INTO usuarios (nome, apelido) VALUES ('$nome', '$apelido')";
+    $sql = "INSERT INTO habitos (titulo, descricao ,meta_mensal) VALUES (?,?,?)";
 
-    //executa o cadastro
-    if(mysqli_query($conn, $sql)){
-        header("location: ../pages/rotina.php"); //verifica se o cadastro está certo, se estiver ele envia pro arquivo rotina e morre aqui
-        exit;
-    }
-    else{
-        echo "erro" . mysqli_error($conn);
-        //se estiver dando erro ele exibe aqui
-    }
-?>
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bind_param("si",$titulo, $descricao ,$meta);
+
+    $stmt->execute();
+
+    header("location: ../pages/rotina.php");
+?>  
