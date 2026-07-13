@@ -94,8 +94,8 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
     <script src="../assets/js/pagesConf.js">
-
     </script>
+     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
 
 </html>

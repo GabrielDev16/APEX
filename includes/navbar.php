@@ -10,7 +10,7 @@
             <strong class="Logo">APEX</strong>
         </a>
 
-        <a href="#">
+        <a href="pages/perfil.php">
             <i class="bi bi-person-circle person"></i>
         </a>
     </div>

@@ -1,0 +1,298 @@
+/* ==========================================================
+   MODO ESCURO GLOBAL
+   Inspirado em GitHub, Notion, Discord e Linear
+========================================================== */
+
+body.dark{
+    background-color:#0f172a;
+    color:#e5e7eb;
+    transition:.25s;
+}
+
+/* Conteúdo principal */
+
+body.dark main{
+    background:transparent;
+    color:#e5e7eb;
+}
+
+/* Títulos */
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6{
+    color:#f8fafc;
+}
+
+/* Parágrafos */
+
+body.dark p,
+body.dark span,
+body.dark label,
+body.dark small{
+    color:#cbd5e1;
+}
+
+/* Links */
+
+body.dark a{
+    color:#60a5fa;
+}
+
+body.dark a:hover{
+    color:#93c5fd;
+}
+
+/* =======================
+        NAVBAR
+======================= */
+
+body.dark .navbar{
+    background:#111827 !important;
+    border-bottom:1px solid #1f2937;
+}
+
+body.dark .navbar a,
+body.dark .navbar-brand,
+body.dark .nav-link{
+    color:#f8fafc !important;
+}
+
+body.dark .nav-link:hover{
+    color:#60a5fa !important;
+}
+
+/* =======================
+          CARDS
+======================= */
+
+body.dark .card{
+    background:#1e293b;
+    border:1px solid #334155;
+    color:#e5e7eb;
+}
+
+body.dark .card-header{
+    background:#111827;
+    border-bottom:1px solid #334155;
+}
+
+body.dark .card-footer{
+    background:#111827;
+    border-top:1px solid #334155;
+}
+
+/* =======================
+          BOTÕES
+======================= */
+
+body.dark .btn-dark{
+    background:#374151;
+    border:none;
+}
+
+body.dark .btn-dark:hover{
+    background:#4b5563;
+}
+
+body.dark .btn-light{
+    background:#374151;
+    color:white;
+    border:none;
+}
+
+body.dark .btn-light:hover{
+    background:#4b5563;
+}
+
+/* =======================
+      INPUTS
+======================= */
+
+body.dark .form-control,
+body.dark .form-select{
+
+    background:#111827;
+    color:#f8fafc;
+    border:1px solid #374151;
+
+}
+
+body.dark .form-control:focus,
+body.dark .form-select:focus{
+
+    background:#111827;
+    color:white;
+    border-color:#3b82f6;
+
+    box-shadow:none;
+
+}
+
+body.dark .form-control::placeholder{
+    color:#94a3b8;
+}
+
+/* =======================
+          TABELAS
+======================= */
+
+body.dark table{
+
+    color:#f8fafc;
+
+}
+
+body.dark .table{
+
+    --bs-table-bg:#1e293b;
+    --bs-table-striped-bg:#243244;
+    --bs-table-hover-bg:#2c3b4f;
+    --bs-table-border-color:#334155;
+    color:#f8fafc;
+
+}
+
+/* =======================
+          MODAL
+======================= */
+
+body.dark .modal-content{
+
+    background:#1e293b;
+    color:#f8fafc;
+    border:1px solid #334155;
+
+}
+
+body.dark .modal-header,
+body.dark .modal-footer{
+
+    border-color:#334155;
+
+}
+
+/* =======================
+        DROPDOWN
+======================= */
+
+body.dark .dropdown-menu{
+
+    background:#1e293b;
+    border:1px solid #334155;
+
+}
+
+body.dark .dropdown-item{
+
+    color:#f8fafc;
+
+}
+
+body.dark .dropdown-item:hover{
+
+    background:#334155;
+
+}
+
+/* =======================
+        ACCORDION
+======================= */
+
+body.dark .accordion-item{
+
+    background:#1e293b;
+    border-color:#334155;
+
+}
+
+body.dark .accordion-button{
+
+    background:#1e293b;
+    color:white;
+
+}
+
+body.dark .accordion-button:not(.collapsed){
+
+    background:#243244;
+    color:white;
+
+}
+
+body.dark .accordion-button::after{
+
+    filter:invert(1);
+
+}
+
+/* =======================
+          ALERTAS
+======================= */
+
+body.dark .alert{
+
+    border:none;
+
+}
+
+/* =======================
+          LIST GROUP
+======================= */
+
+body.dark .list-group-item{
+
+    background:#1e293b;
+    color:#f8fafc;
+    border-color:#334155;
+
+}
+
+/* =======================
+          OFFCANVAS
+======================= */
+
+body.dark .offcanvas{
+
+    background:#111827;
+    color:white;
+
+}
+
+/* =======================
+          FOOTER
+======================= */
+
+body.dark footer{
+
+    background:#111827;
+    color:#cbd5e1;
+    border-top:1px solid #334155;
+
+}
+
+/* =======================
+        SCROLLBAR
+======================= */
+
+body.dark::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+body.dark::-webkit-scrollbar-thumb{
+
+    background:#374151;
+    border-radius:20px;
+
+}
+
+body.dark::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}

@@ -155,5 +155,6 @@
 
     <script src="<?= BASE_URL ?>bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= BASE_URL ?>assets/js/pagesConf.js"></script>
+     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
 </html>

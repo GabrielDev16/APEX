@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?=BASE_URL?>bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/darkmod.css">
     <!-- falvicon do sistema -->
     <link rel="shortcut icon" href="<?= BASE_URL ?>assets/img/Icon APEX.png" type="image/x-icon">
 </head>

@@ -106,6 +106,7 @@
     </script>
     <!-- script de personalização da página -->
     <script src="<?= BASE_URL ?>assets/js/main.js"></script>
+     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
 
 </html>
