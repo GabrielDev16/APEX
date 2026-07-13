@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 18, 2026 at 11:00 PM
+-- Generation Time: Jul 13, 2026 at 08:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -42,7 +42,7 @@ CREATE TABLE `boks` (
 --
 
 INSERT INTO `boks` (`id`, `titulo`, `autor`, `total_paginas`, `paginas_lidas`, `capa`, `data_cadastro`) VALUES
-(1, 'PHP 8', 'Paulo A.', 675, 65, 'capa php.jpeg', '2026-06-17 15:22:16');
+(1, 'PHP 8', 'Paulo A.', 675, 675, 'capa php.jpeg', '2026-06-17 15:22:16');
 
 -- --------------------------------------------------------
 
@@ -93,13 +93,6 @@ CREATE TABLE `metas` (
   `data_limite` date DEFAULT NULL,
   `status` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `metas`
---
-
-INSERT INTO `metas` (`id`, `titulo`, `descricao`, `data_criacao`, `data_limite`, `status`) VALUES
-(15, 'Conseguir Um Trabalho', 'Como proficional de T.I.', '2026-06-17 14:36:44', '2026-07-15', 0);
 
 -- --------------------------------------------------------
 
@@ -240,7 +233,7 @@ ALTER TABLE `meses`
 -- AUTO_INCREMENT for table `metas`
 --
 ALTER TABLE `metas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `perfil`
