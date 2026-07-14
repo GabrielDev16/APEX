@@ -38,7 +38,8 @@ body.dark small{
 
 /* Links */
 
-body.dark a{
+body.dark a,
+body.strong{
     color:#60a5fa;
 }
 
@@ -295,4 +296,31 @@ body.dark::-webkit-scrollbar-track{
 
     background:#111827;
 
+}
+
+/*=======================
+        ICON
+=========================*/
+
+/* Ícone do perfil */
+body.dark .person{
+    color: #f8fafc !important;
+}
+
+/* Todos os ícones da plataforma */
+body.dark i{
+    color: #f8fafc !important;
+}
+
+/* Ícones dos cards */
+body.dark .iconCard{
+    color: #f8fafc !important;
+}
+
+/*=======================
+        LOGO
+=========================*/
+/* Logo */
+body.dark .Logo{
+    color: #f8fafc !important;
 }
