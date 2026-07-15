@@ -1,6 +1,7 @@
 <!-- implementação do base url para evitar erro de lunks -->
 <?php 
-    require_once __DIR__ . '/conf/url.php'
+    require_once __DIR__ . '/conf/url.php';
+    require_once __DIR__ . '/conf/db.php'
 ?>
 <!doctype html>
 <html lang="PT-br">
@@ -21,8 +22,18 @@
 
     <!-- inicio do conteudo principal da página -->
     <main class="container mt-4 mb-4">
+
+        <!-- php que gerencia o nome do usurio -->
+        <?php 
+            $sql = "SELECT *  FROM perfil2";
+            
+            $resultado = mysqli_query($conn , $sql);
+
+            $user = mysqli_fetch_assoc($resultado);
+        ?>
+
         <!-- titulo da plataforma -->
-        <h1 class="title-index">Olá, Gabriel 👋</h1>
+        <h1 class="title-index">Olá, <?= $user['nome'] ?>👋</h1>
 
         <!-- paragrafo com dia/mês/ano -->
         <span id="date"></span>

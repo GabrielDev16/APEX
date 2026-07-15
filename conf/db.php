@@ -11,8 +11,9 @@ $db = "gabriel";
 $conn = new mysqli($host, $user, $senha, $db);
 
 // verifica se a conexão foi bem sucessedida
-if ($conn -> connect_erro){
-    die("Erro na Conexão " . $conn->connect_erro);
+if ($conn ->connect_error){
+    die("Erro na Conexão " . $conn->connect_error);
+    
 }
 
 // echo"Conexão realizada com sucesso!";

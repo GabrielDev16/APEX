@@ -1,6 +1,8 @@
 <!-- implementação do base url para evitar erro de lunks -->
 <?php
 require_once __DIR__ . '/../conf/url.php';
+
+require_once __DIR__ . '/../conf/db.php';
 ?>
 <!doctype html>
 <html lang="PT-br">
@@ -35,20 +37,42 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/crud/perfilUpadate.php">
+
+                        <!-- puxando dos dados do db para os values do formulario-->
+                        <?php
+                        $sql = "SELECT * FROM perfil2";
+
+                        $resultado = mysqli_query($conn, $sql);
+
+                        $user_data = mysqli_fetch_assoc($resultado);
+                        ?>
+
+                        <form id="formValide" action="<?= BASE_URL ?>crud/perfilUpadate.php" method="post">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome:</label>
-                                <input type="text" class="form-control" id="nome" placeholder="" name="nome">
+                                <input type="text" class="form-control" id="nome" value="<?= $user_data['nome'] ?>" name="nome">
+
+                                <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="d-flex">
+                                        <div class="toast-body" id="mensagem">
+
+                                        </div>
+                                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" placeholder="" name="email">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email"
+                                    value="<?= $user_data['email'] ?>" name="email">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                 <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -65,8 +89,26 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                     </div>
 
                     <div class=" col-md-8 ">
-                        <h1>João Gabriel</h1>
-                        <p>jooaogabriel@gmail.com</p>
+                        <?php
+                        //banco de dados
+                        require_once __DIR__ . "/../conf/db.php";
+
+                        // consulta sql
+                        $sql = "SELECT * FROM perfil2;";
+
+                        //joga no banco de dados
+                        $resultado = mysqli_query($conn,  $sql);
+                        ?>
+
+                        <!-- laço de repetição -->
+                        <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
+
+                            <h1><?= $user_data['nome'] ?></h1>
+
+                            <p><?= $user_data['email'] ?></p>
+
+                        <?php } ?>
+
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formPerfil">
                             Atualizar Dados
                         </button>
@@ -94,6 +136,7 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
         </div>
     </main>
 
+
     <!-- inclusão do rodapé da plataforma -->
     <?php
     include  __DIR__ . '/../includes/footer.php';
@@ -105,6 +148,7 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
     <!-- script de personalização da página -->
+    <script src="<?= BASE_URL ?>assets/js/formValidation.js"></script>
     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 
 </body>
