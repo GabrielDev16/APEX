@@ -23,7 +23,7 @@ formulario.addEventListener("submit", function(e){
         return;
     }
 
-    //alerta de campos preenchidos com sucesso
-    location: "/crud/perfilUpadate.php"
-    alert("Campos Preenchidos Corretamentes")
+    //envia o form validado pro php colocar no banco
+    formulario.submit();
+
 })
