@@ -48,15 +48,15 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
                         </div>
                         <div class="modal-body">
                             <!-- formulario para colocar dados dentro da tabela do banco de dados -->
-                            <form action="<?= BASE_URL ?>crud/metaCreat.php" method="POST">
+                            <form id="formMetas" action="<?= BASE_URL ?>crud/metaCreat.php" method="POST">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Nome da meta:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    <label for="nomeM" class="form-label">Nome da meta:</label>
+                                    <input type="text" class="form-control" id="nomeM"
                                         aria-describedby="emailHelp" name="titulo">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Descrição:</label>
-                                    <textarea name="descricao" id="exampleInputPassword1"
+                                    <label for="descricao" class="form-label">Descrição:</label>
+                                    <textarea name="descricao" id="descricao"
                                         class="form-control"></textarea>
                                 </div>
                                 <div class="mb-3">
@@ -175,9 +175,8 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
-    <script src="../assets/js/pagesConf.js">
-
-    </script>
+    <script type="module" src="<?= BASE_URL ?>assets/js/metasValidation.js"></script>
+    <script src="../assets/js/pagesConf.js"></script>
     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
 

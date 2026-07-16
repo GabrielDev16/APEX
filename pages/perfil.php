@@ -76,8 +76,8 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                             <div class="mb-3">
                                 <label for="imagem" class="form-label">Foto de Perfil</label>
                                 <input accept="image/*" type="file" class="form-control" id="imagem"
-                                name="imagem">
-                                
+                                    name="imagem">
+
                             </div>
 
                             <div class="modal-footer">
@@ -99,24 +99,24 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                     <div class=" col-md-4">
 
                         <div class="ratio ratio-4x3" style="width:200px;">
-                            
-                        <!-- php que carrega a imagem de perfil -->
-                        <?php 
+
+                            <!-- php que carrega a imagem de perfil -->
+                            <?php
                             require_once __DIR__ . "/../conf/db.php";
 
                             $sql = "SELECT * FROM perfil2";
 
-                            $resultado = mysqli_query($conn , $sql);
+                            $resultado = mysqli_query($conn, $sql);
 
-                        ?>
+                            ?>
 
 
-                            <?php while($user_data = mysqli_fetch_assoc($resultado)){?>
+                            <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
 
-                            <img src="<?= BASE_URL ?>uploads/<?= $user_data['img'] ?>" class="img-fluid object-fit-cover rounded"
-                                alt="Foto de perfil">
+                                <img src="<?= BASE_URL ?>uploads/<?= $user_data['img'] ?>" class="img-fluid object-fit-cover rounded"
+                                    alt="Foto de perfil">
 
-                            <?php };?>
+                            <?php }; ?>
                         </div>
                     </div>
 
@@ -135,9 +135,9 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                         <!-- laço de repetição -->
                         <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
 
-                        <h1><?= $user_data['nome'] ?></h1>
+                            <h1><?= $user_data['nome'] ?></h1>
 
-                        <p><?= $user_data['email'] ?></p>
+                            <p><?= $user_data['email'] ?></p>
 
                         <?php } ?>
 
@@ -172,7 +172,6 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
         </div>
     </main>
 
-
     <!-- inclusão do rodapé da plataforma -->
     <?php
     include  __DIR__ . '/../includes/footer.php';
@@ -184,7 +183,7 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
     <!-- script de personalização da página -->
-    <script src="<?= BASE_URL ?>assets/js/formValidation.js"></script>
+    <script type="module" src="<?= BASE_URL ?>assets/js/perfilValidation.js"></script>
     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 
 </body>
