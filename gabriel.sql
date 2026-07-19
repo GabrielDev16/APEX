@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2026 at 08:01 PM
+-- Generation Time: Jul 19, 2026 at 09:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -42,7 +42,8 @@ CREATE TABLE `boks` (
 --
 
 INSERT INTO `boks` (`id`, `titulo`, `autor`, `total_paginas`, `paginas_lidas`, `capa`, `data_cadastro`) VALUES
-(1, 'PHP 8', 'Paulo A.', 675, 675, 'capa php.jpeg', '2026-06-17 15:22:16');
+(1, 'PHP 8', 'Paulo A.', 675, 0, 'capa php.jpeg', '2026-06-17 15:22:16'),
+(2, 'Projetor não liga', 'Marrocos', 23, 0, 'ft1.jpeg', '2026-07-16 12:55:44');
 
 -- --------------------------------------------------------
 
@@ -101,10 +102,28 @@ CREATE TABLE `metas` (
 --
 
 CREATE TABLE `perfil` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(255) NOT NULL,
   `Perfil` varchar(50) DEFAULT 'NULL'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perfil2`
+--
+
+CREATE TABLE `perfil2` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `img` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `perfil2`
+--
+
+INSERT INTO `perfil2` (`id`, `nome`, `email`, `img`) VALUES
+(1, 'Gabriel', 'joaogabriel08.2007@gmail.com', 'Perfil ML.jpg');
 
 -- --------------------------------------------------------
 
@@ -155,6 +174,14 @@ CREATE TABLE `transacoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
+-- Dumping data for table `transacoes`
+--
+
+INSERT INTO `transacoes` (`id`, `tipo`, `categoria`, `descricao`, `valor`, `data_lancamento`) VALUES
+(1, 'saida', 'teste', 'AA', 345.00, '2026-07-13'),
+(2, 'entrada', 'gastei no tra,mpo', 'ggg', 6543.00, '2026-07-13');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -183,9 +210,9 @@ ALTER TABLE `metas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `perfil`
+-- Indexes for table `perfil2`
 --
-ALTER TABLE `perfil`
+ALTER TABLE `perfil2`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -215,7 +242,7 @@ ALTER TABLE `transacoes`
 -- AUTO_INCREMENT for table `boks`
 --
 ALTER TABLE `boks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `habitos`
@@ -233,13 +260,13 @@ ALTER TABLE `meses`
 -- AUTO_INCREMENT for table `metas`
 --
 ALTER TABLE `metas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `perfil`
+-- AUTO_INCREMENT for table `perfil2`
 --
-ALTER TABLE `perfil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `perfil2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `progresso_habitos`
@@ -257,7 +284,7 @@ ALTER TABLE `registros_habito`
 -- AUTO_INCREMENT for table `transacoes`
 --
 ALTER TABLE `transacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
