@@ -4,7 +4,7 @@
 $host = "localhost";
 $user = "root";
 $senha = "";
-$db = "gabriel";
+$db = "apex";
 
 // faz conexão com o banco
 

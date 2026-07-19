@@ -104,3 +104,9 @@ nav {
     color: var(--cor-secundaria);
     font-weight: 500;
 }
+
+.login-card{
+    width:100%;
+    max-width:420px;
+    border-radius:16px;
+}

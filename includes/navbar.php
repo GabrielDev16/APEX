@@ -6,11 +6,11 @@
 <nav class="navbar border-bottom">
 
     <div class="container justify-content-between">
-        <a class="navbar-brand" href="<?= BASE_URL ?>index.php">
+        <a class="navbar-brand" href="<?= BASE_URL ?>pages/dashboard.php">
             <strong class="Logo">APEX</strong>
         </a>
 
-        <a href="pages/perfil.php">
+        <a href="<?= BASE_URL ?>/pages/perfil.php">
             <i class="bi bi-person-circle person"></i>
         </a>
     </div>

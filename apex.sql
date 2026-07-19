@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2026 at 09:44 PM
+-- Generation Time: Jul 19, 2026 at 09:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gabriel`
+-- Database: `apex`
 --
 
 -- --------------------------------------------------------
@@ -93,16 +93,6 @@ CREATE TABLE `metas` (
   `data_criacao` datetime DEFAULT current_timestamp(),
   `data_limite` date DEFAULT NULL,
   `status` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `perfil`
---
-
-CREATE TABLE `perfil` (
-  `Perfil` varchar(50) DEFAULT 'NULL'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
