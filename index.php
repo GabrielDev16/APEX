@@ -1,35 +1,35 @@
 <!-- implementação do base url para evitar erro de lunks -->
-<?php 
-    require_once __DIR__ . '/conf/url.php';
-    require_once __DIR__ . '/conf/db.php'
+<?php
+require_once __DIR__ . '/conf/url.php';
+require_once __DIR__ . '/conf/db.php'
 ?>
 <!doctype html>
 <html lang="PT-br">
 
 <!-- head da página index -->
-<?php 
-        $title = "Dashboard"; // variavel do titulo da página 
-        include "includes/header.php"; // include que puxa o cabeçalho da página
-    ?>
+<?php
+$title = "Dashboard"; // variavel do titulo da página 
+include "includes/header.php"; // include que puxa o cabeçalho da página
+?>
 <!-- fim do head-->
 
 <body>
     <!-- navbar da página -->
-    <?php 
-            include "includes/navbar.php";
-        ?>
+    <?php
+    include "includes/navbar.php";
+    ?>
     <!-- fim do navbar da página -->
 
     <!-- inicio do conteudo principal da página -->
     <main class="container mt-4 mb-4">
 
         <!-- php que gerencia o nome do usurio -->
-        <?php 
-            $sql = "SELECT *  FROM perfil2";
-            
-            $resultado = mysqli_query($conn , $sql);
+        <?php
+        $sql = "SELECT *  FROM perfil2";
 
-            $user = mysqli_fetch_assoc($resultado);
+        $resultado = mysqli_query($conn, $sql);
+
+        $user = mysqli_fetch_assoc($resultado);
         ?>
 
         <!-- titulo da plataforma -->
@@ -44,51 +44,88 @@
             <!-- div coluna no celular / div inline desktop -->
             <!-- div 01 -->
             <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-body d-flex flex-column">
                         <i class="bi bi-calendar-date-fill iconCard"></i>
                         <h3 class="mt-2 tituloCard">Rotina</h3>
                         <p class="descricaoCard">Organize suas tarefas diárias com precisão e disciplina.</p>
-                        <button type="button" class="btn btn-outline-secondary w-100"><a class="nav-link" href="<?= BASE_URL ?>pages/rotina.php">Acessar</a></button>
+                        <button type="button" class="btn btn-outline-secondary w-100 mt-auto"><a class="nav-link" href="<?= BASE_URL ?>pages/rotina.php">Acessar</a></button>
                     </div>
                 </div>
             </div>
 
             <!-- div 02 -->
             <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-body d-flex flex-column">
                         <i class="bi bi-meta iconCard"></i>
                         <h3 class="mt-2 tituloCard">Metas</h3>
                         <p class="descricaoCard">Acompanhe seus objetivos de curto e longo prazo de forma analítica.</p>
-                        <button type="button" class="btn btn-outline-secondary w-100"><a class="nav-link" href="<?= BASE_URL ?>pages/metas.php">Acessar</a></button>
+                        <button type="button" class="btn btn-outline-secondary w-100 mt-auto"><a class="nav-link" href="<?= BASE_URL ?>pages/metas.php">Acessar</a></button>
                     </div>
                 </div>
             </div>
 
             <!-- div 03 -->
             <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-body d-flex flex-column">
                         <i class="bi bi-book iconCard"></i>
                         <h3 class="mt-2 tituloCard">Leitura</h3>
                         <p class="descricaoCard">Agerencie sua lista de livros e o progresso do seu conhecimento.</p>
-                        <button type="button" class="btn btn-outline-secondary w-100"><a class="nav-link" href="<?= BASE_URL ?>pages/leitura.php">Acessar</a></button>
+                        <button type="button" class="btn btn-outline-secondary w-100 mt-auto"><a class="nav-link" href="<?= BASE_URL ?>pages/leitura.php">Acessar</a></button>
                     </div>
                 </div>
             </div>
 
             <!-- div 04 -->
             <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-body d-flex flex-column">
                         <i class="bi bi-wallet iconCard"></i>
                         <h3 class="mt-2 tituloCard">Finanças</h3>
                         <p class="descricaoCard">Controle seus gastos e ganhos com métricas de alta performance.</p>
-                        <button type="button" class="btn btn-outline-secondary w-100"><a class="nav-link" href="<?= BASE_URL ?>pages/financas.php">Acessar</a></button>
+                        <button type="button" class="btn btn-outline-secondary w-100 mt-auto"><a class="nav-link" href="<?= BASE_URL ?>pages/financas.php">Acessar</a></button>
                     </div>
                 </div>
             </div>
+
+        </div>
+
+        <!-- linha do pomodoro e do calendario -->
+        <div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+
+            <!-- div coluna no celular / div inline desktop -->
+
+            <!-- div 01 -->
+            <div class="col-md-4">
+                <!-- Adicionado d-flex e flex-column no card -->
+                <div class="card h-100 d-flex flex-column">
+                    <!-- Adicionado d-flex e flex-column no card-body -->
+                    <div class="card-body d-flex flex-column">
+                        <i class="bi bi-alarm-fill iconCard"></i>
+                        <h3 class="mt-2 tituloCard">Pomodoro</h3>
+                        <p class="descricaoCard">Elimine as distrações, ative o cronômetro e domine suas metas com foco absoluto.</p>
+
+                        <!-- Adicionado mt-auto no botão para empurrá-lo para o fundo -->
+                        <button type="button" class="btn btn-outline-secondary w-100 mt-auto"><a class="nav-link" href="<?= BASE_URL ?>pages/pomodoro.php">Acessar</a></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- div 02 -->
+            <div class="col-md-8">
+                <div class="card h-100 d-flex flex-column">
+                    <div class="card-body d-flex flex-column">
+                        <i class="bi bi-calendar-week-fill iconCard"></i>
+                        <h3 class="mt-2 tituloCard">Calendario</h3>
+                        <p class="descricaoCard">Visualize sua jornada, planeje seus próximos passos e garanta que cada dia contribua para suas grandes metas.</p>
+                        <button type="button" class="btn btn-outline-secondary w-100 mt-auto"><a class="nav-link" href="<?= BASE_URL ?>pages/calendario.php">Acessar</a></button>
+                    </div>
+                </div>
+            </div>
+
+
 
         </div>
 
@@ -106,8 +143,8 @@
     </main>
 
     <!-- inclusão do rodapé da plataforma -->
-    <?php 
-        include 'includes/footer.php';
+    <?php
+    include 'includes/footer.php';
     ?>
     <!-- final do rodapé da plataforma -->
 
@@ -117,7 +154,7 @@
     </script>
     <!-- script de personalização da página -->
     <script src="<?= BASE_URL ?>assets/js/main.js"></script>
-     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
+    <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
 
 </html>
