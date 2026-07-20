@@ -1,14 +1,26 @@
-<?php 
+<?php
+session_start();
 
-    require_once __DIR__ ."/../conf/db.php";
+require_once __DIR__ . "/../../conf/url.php";
 
-    $id = $_GET['id'];
+if (!isset($_SESSION['id'])) {
+    header("location:" . BASE_URL . "login.php");
+    exit();
+}
+require_once __DIR__ . "/../../conf/db.php";
 
-    $sql = "UPDATE metas SET status = 1 WHERE id = $id";
+$id = $_SESSION['id'];
 
-    mysqli_query($conn, $sql);
+$idmeta = $_GET['id'];
 
-    header("location: ../pages/metas.php");
-    exit;
 
-?>
+$sql = "UPDATE metas SET status = 1 WHERE id = :id";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bindParam(":id", $idmeta, PDO::PARAM_INT);
+
+$stmt->execute();
+
+header("location:". BASE_URL ."pages/metas.php");
+exit;

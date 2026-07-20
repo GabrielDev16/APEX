@@ -42,7 +42,7 @@ include __DIR__ . "/../includes/header.php";
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= BASE_URL ?>crud/upload.php" method="POST" enctype="multipart/form-data">
+                            <form action="<?= BASE_URL ?>crud/leitura/upload.php" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="titulo" class="form-label">Nome do livro:</label>
                                     <input type="text" class="form-control" id="titulo" name="titulo">
@@ -135,7 +135,7 @@ include __DIR__ . "/../includes/header.php";
                 <div class="modal fade" id="<?= $modalId ?>" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form action="<?= BASE_URL ?>crud/atualizar.php" method="POST">
+                            <form action="<?= BASE_URL ?>crud/leitura/atualizar.php" method="POST">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Atualizar leitura</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

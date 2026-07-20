@@ -1,21 +1,32 @@
-<!-- inclui o banco de dados no projeto -->
-<?php 
-    require_once __DIR__ . "/../conf/db.php";
+<?php
+session_start();
 
-    //recebe os dados que vem do fomrulario
-    $titulo = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-    $meta = $_POST['meta'];
-    
+require_once __DIR__ . "/../../conf/url.php";
 
-    //comando sql que faz a inserção de itens na tabela
-    $sql = "INSERT INTO habitos (titulo, descricao ,meta_mensal) VALUES (?,?,?)";
+if (!isset($_SESSION['id'])) {
+    header("location:" . BASE_URL . "login.php");
+    exit();
+}
 
-    $stmt = $conn->prepare($sql);
+//subindo o banco
+require_once __DIR__ . "/../../conf/db.php";
 
-    $stmt->bind_param("si",$titulo, $descricao ,$meta);
+//variaveis do formulario
 
-    $stmt->execute();
+$titulo = $_POST['nome'];
+$descricao = $_POST['descricao'];
+$meta = $_POST['meta'];
 
-    header("location: ../pages/rotina.php");
-?>  
+//consulta sql
+$sql = "INSERT INTO habitos (titulo, descricao ,meta_mensal) VALUES (:nome,:descricao,:meta)";
+
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bindParam(':nome', $titulo);
+$stmt->bindParam(':descricao', $descricao);
+$stmt->bindParam(':meta', $meta);
+
+$stmt->execute();
+
+header("location:" . BASE_URL . "pages/rotina.php");

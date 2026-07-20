@@ -58,7 +58,7 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
                         </div>
                         <div class="modal-body">
                             <!-- formulario para colocar dados dentro da tabela do banco de dados -->
-                            <form action="<?= BASE_URL ?>crud/rotinaCreat.php" method="POST">
+                            <form action="<?= BASE_URL ?>crud/rotina/rotinaCreat.php" method="POST">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">TITULO:</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"

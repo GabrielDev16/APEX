@@ -1,12 +1,27 @@
 <?php 
-    require_once __DIR__ . "/../conf/db.php";
+    session_start();
+
+    require_once __DIR__ . "/../../conf/url.php";
+
+    if(!isset($_SESSION['id'])){
+        header("location:" . BASE_URL . "login.php");
+        exit();
+    }
+    require_once __DIR__ . "/../../conf/db.php";
+
+    $id = $_SESSION['id'];
+
 
     $id = $_GET['id'];
 
-    $sql = "DELETE FROM metas WHERE id= $id";
+    $sql = "DELETE FROM metas WHERE id= :id";
 
-    mysqli_query($conn, $sql);
+    $stmt = $conn->prepare($sql);
 
-    header("location: ../pages/metas.php");
+    $stmt->bindParam(":id", $id , PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    header("location:". BASE_URL ."pages/metas.php");
     exit;
 ?>

@@ -5,6 +5,8 @@ session_start();
 require_once __DIR__ . '/../conf/url.php';
 require_once __DIR__ . '/../conf/db.php';
 
+
+
 // /verificação de sseção
 if (!isset($_SESSION['id'])) {
     header("location:" . BASE_URL. "login.php");
@@ -56,7 +58,7 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                         ?>
 
                         <?php while($user_data =  $stmt->fetch(PDO::FETCH_ASSOC)){?>
-                        <form id="formValide" action="<?= BASE_URL ?>crud/perfilUpadate.php" method="post"
+                        <form id="formValide" action="<?= BASE_URL ?>crud/perfil/perfilUpadate.php" method="post"
                             enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">Nome:</label>
@@ -82,11 +84,11 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                                     name="email">
                             </div>
 
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="senha" class="form-label">Senha</label>
                                 <input type="password" class="form-control" id="senha" value="<?= $user_data['senha_hash'] ?>"
                                     name="senha">
-                            </div>
+                            </div> -->
 
                             <div class="mb-3">
                                 <label for="imagem" class="form-label">Foto de Perfil</label>

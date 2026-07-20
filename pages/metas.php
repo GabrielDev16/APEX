@@ -58,7 +58,7 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
                         </div>
                         <div class="modal-body">
                             <!-- formulario para colocar dados dentro da tabela do banco de dados -->
-                            <form id="formMetas" action="<?= BASE_URL ?>crud/metaCreat.php" method="POST">
+                            <form id="formMetas" action="<?= BASE_URL ?>crud/meta/metaCreat.php" method="POST">
                                 <div class="mb-3">
                                     <label for="nomeM" class="form-label">Nome da meta:</label>
                                     <input type="text" class="form-control" id="nomeM"
@@ -118,7 +118,7 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
                             </p>
                             <hr>
                             <div>
-                                <a href="<?= BASE_URL ?>crud/concluirMeta.php?id=<?= $user_data['id'] ?>" class="btn btn-primary w-100"><i class="bi bi-bookmark-check"></i> Meta Concluida</a>
+                                <a href="<?= BASE_URL ?>crud/meta/concluirMeta.php?id=<?= $user_data['id'] ?>" class="btn btn-primary w-100"><i class="bi bi-bookmark-check"></i> Meta Concluida</a>
                             </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
                                 <?= $user_data['data_limite'] ?>
                             </p>
                             <!-- BOTÃO DE DELETAR A META APÓS CONCLUIDA -->
-                            <a onclick="return confirm('Deseja apagar essa meta?')" href="<?= BASE_URL ?>crud/deleteMeta.php?id=<?= $user_data['id'] ?>" class="btn btn-danger w-100"><i class="bi bi-trash3"></i> Deletar Meta</a>
+                            <a onclick="return confirm('Deseja apagar essa meta?')" href="<?= BASE_URL ?>crud/meta/deleteMeta.php?id=<?= $user_data['id'] ?>" class="btn btn-danger w-100"><i class="bi bi-trash3"></i> Deletar Meta</a>
                         </div>
                     </div>
                 </div>
