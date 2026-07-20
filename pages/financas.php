@@ -1,6 +1,15 @@
 <?php
-require_once __DIR__ . "/../conf/url.php";
-require_once __DIR__ . "/../conf/db.php";
+session_start();
+
+require_once __DIR__ . '/../conf/url.php';
+require_once __DIR__ . '/../conf/db.php';
+
+// /verificação de sseção
+if (!isset($_SESSION['id'])) {
+    header("location:" . "login.php");
+    exit();
+}
+
 
 $sql = "SELECT * FROM transacoes ORDER BY data_lancamento DESC, id DESC";
 $resultado = mysqli_query($conn, $sql);

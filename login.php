@@ -1,11 +1,11 @@
 <!-- arquivo de login do php para o usuario acessar o sistema-->
-
 <!-- implementação do base url para evitar erro de lunks -->
 <?php
 require_once __DIR__ . '/conf/url.php';
 
 require_once __DIR__ . '/conf/db.php';
 ?>
+
 <!doctype html>
 <html lang="PT-br">
 
@@ -16,46 +16,47 @@ include __DIR__ . "/includes/header.php"; // include que puxa o cabeçalho da p�
 ?>
 <!-- fim do head-->
 
-<body>
-
-
+<body class="overflow-y-hidden">
 
     <!-- inicio do conteudo principal da página -->
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-4 w-100">
 
         <!-- div que vai conter o fomrulario de login -->
         <div class="d-flex flex-column justify-content-center min-vh-100 align-items-center">
             <div class="card shadow border-0 login-card">
-                <div class="card-body d-flex justify-content-center flex-column" style=" width: 400px">
+                <div class="card-body d-flex justify-content-center flex-column w-100" style=" max-width: 400px">
 
                     <!-- logo do sistema -->
-                    <img class="text-center m-3" src="/assets/img/Logo APEX.png" alt="Logo do Sistema">
+                    <img class="img-fluid d-block mx-auto m-3" src="<?= BASE_URL ?>assets/img/Icon APEX.png" alt="Logo do Sistema" style="max-width:100px;">
 
                     <!-- formulario de login -->
                     <form method="post" action="<?= BASE_URL ?>crud/login_valida.php">
-                        <div class="mb-3" >
-                            <label 
-                            for="email" 
-                            class="form-label">Email:</label>
-                            <input 
-                            type="email" 
-                            class="form-control" 
-                            name="email" 
-                            id="email" 
-                            aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">mensagem de erro</div>
-                        </div>
                         <div class="mb-3">
-                            <label 
-                            for="senha" 
-                            class="form-label">Senha:</label>
-                            <input 
-                            type="password" 
-                            class="form-control" 
-                            name="senha" 
-                            id="senha">
+                            <label
+                                for="email"
+                                class="form-label">Email:</label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                name="email"
+                                id="email"
+                                aria-describedby="emailHelp"
+                                require>
+                            <div id="emailHelp" class="form-text"></div>
                         </div>
-                       
+                        <div class="mb-2">
+                            <label
+                                for="senha"
+                                class="form-label">Senha:</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="senha"
+                                id="senha"
+                                require>
+                        </div>
+
+                        <a class="mb-2 d-flex justify-content-center" href="cadastro.php">Não Possui Cadastro?</a>
                         <button type="submit" class="btn btn-primary w-100">Entrar</button>
                     </form>
 

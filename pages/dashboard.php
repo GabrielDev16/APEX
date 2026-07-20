@@ -1,7 +1,18 @@
 <!-- implementação do base url para evitar erro de lunks -->
 <?php
+// inicia a sessão
+session_start();
+
 require_once __DIR__ . '/../conf/url.php';
-require_once __DIR__ . '/../conf/db.php';3
+require_once __DIR__ . '/../conf/db.php';
+
+//verifica se o usuario tá logado
+if (!isset($_SESSION['id'])) {
+    header("location:" . BASE_URL . "login.php");
+    exit();
+}
+
+
 ?>
 <!doctype html>
 <html lang="PT-br">
@@ -26,11 +37,13 @@ include "../includes/header.php"; // include que puxa o cabeçalho da página
 
         <!-- php que gerencia o nome do usurio -->
         <?php
-        $sql = "SELECT *  FROM perfil2";
-
-        $resultado = mysqli_query($conn, $sql);
-
-        $user = mysqli_fetch_assoc($resultado);
+        //seção de id por usuario
+        $id = $_SESSION['id'];
+        //faz a consulta
+        $sql = "SELECT * FROM perfil2 WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);          // substitui bind_param + execute
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);  // substitui get_result + fetch_assoc
         ?>
 
         <!-- titulo da plataforma -->
@@ -145,7 +158,7 @@ include "../includes/header.php"; // include que puxa o cabeçalho da página
 
     <!-- inclusão do rodapé da plataforma -->
     <?php
-    include __DIR__.  '/../includes/footer.php';
+    include __DIR__ .  '/../includes/footer.php';
     ?>
     <!-- final do rodapé da plataforma -->
 

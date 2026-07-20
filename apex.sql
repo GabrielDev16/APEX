@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 19, 2026 at 09:52 PM
+-- Generation Time: Jul 20, 2026 at 06:42 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -105,15 +105,17 @@ CREATE TABLE `perfil2` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `img` varchar(255) DEFAULT NULL
+  `img` varchar(255) DEFAULT NULL,
+  `senha_hash` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `perfil2`
 --
 
-INSERT INTO `perfil2` (`id`, `nome`, `email`, `img`) VALUES
-(1, 'Gabriel', 'joaogabriel08.2007@gmail.com', 'Perfil ML.jpg');
+INSERT INTO `perfil2` (`id`, `nome`, `email`, `img`, `senha_hash`) VALUES
+(1, 'João Gabriel', 'jooaogabriel08.2007@gmail.com', NULL, '$2y$10$w27qPRUsgZzWLQuy6GnNmuCfcPDm/GqL1PaVQ182ldorXNYXAjBFa'),
+(2, 'Usuario Teste', 'teste@gmail.com', NULL, '$2y$10$EEIYNiUOLMHjdBzROn/oOueT2Q5ttXEXkBKcDY444ga80IQesPtOa');
 
 -- --------------------------------------------------------
 
@@ -256,7 +258,7 @@ ALTER TABLE `metas`
 -- AUTO_INCREMENT for table `perfil2`
 --
 ALTER TABLE `perfil2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `progresso_habitos`

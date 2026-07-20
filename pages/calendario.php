@@ -1,8 +1,16 @@
 <!-- implementação do base url para evitar erro de lunks -->
 <?php
-require_once __DIR__ . '/../conf/url.php';
+session_start();
 
+require_once __DIR__ . '/../conf/url.php';
 require_once __DIR__ . '/../conf/db.php';
+
+// /verificação de sseção
+if (!isset($_SESSION['id'])) {
+    header("location:" . "login.php");
+    exit();
+}
+
 ?>
 <!doctype html>
 <html lang="PT-br">
@@ -28,8 +36,8 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
         <!-- titulo da página -->
         <h1 class="title-index">Calendario</h1>
 
-        
-        
+
+
     </main>
 
     <!-- inclusão do rodapé da plataforma -->

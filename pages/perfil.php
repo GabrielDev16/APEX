@@ -1,8 +1,16 @@
 <!-- implementação do base url para evitar erro de lunks -->
 <?php
-require_once __DIR__ . '/../conf/url.php';
+session_start();
 
+require_once __DIR__ . '/../conf/url.php';
 require_once __DIR__ . '/../conf/db.php';
+
+// /verificação de sseção
+if (!isset($_SESSION['id'])) {
+    header("location:" . "login.php");
+    exit();
+}
+
 ?>
 <!doctype html>
 <html lang="PT-br">
@@ -40,13 +48,14 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
 
                         <!-- puxando dos dados do db para os values do formulario-->
                         <?php
-                        $sql = "SELECT * FROM perfil2";
-
-                        $resultado = mysqli_query($conn, $sql);
-
-                        $user_data = mysqli_fetch_assoc($resultado);
+                        $id = $_SESSION['id'];
+                        $sql = "SELECT * FROM perfil2 WHERE id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute([$id]);
+                        
                         ?>
 
+                        <?php while($user_data =  $stmt->fetch(PDO::FETCH_ASSOC)){?>
                         <form id="formValide" action="<?= BASE_URL ?>crud/perfilUpadate.php" method="post"
                             enctype="multipart/form-data">
                             <div class="mb-3">
@@ -74,6 +83,12 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                             </div>
 
                             <div class="mb-3">
+                                <label for="senha" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="senha" value="<?= $user_data['senha_hash'] ?>"
+                                    name="senha">
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="imagem" class="form-label">Foto de Perfil</label>
                                 <input accept="image/*" type="file" class="form-control" id="imagem"
                                     name="imagem">
@@ -86,6 +101,7 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                             </div>
 
                         </form>
+                        <?php } ?>
 
                     </div>
                 </div>
@@ -104,14 +120,14 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                             <?php
                             require_once __DIR__ . "/../conf/db.php";
 
-                            $sql = "SELECT * FROM perfil2";
-
-                            $resultado = mysqli_query($conn, $sql);
-
+                            $id = $_SESSION['id'];
+                            $sql = "SELECT * FROM perfil2 WHERE id = ?";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute([$id]);
                             ?>
 
 
-                            <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
+                            <?php while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 
                                 <img src="<?= BASE_URL ?>uploads/<?= $user_data['img'] ?>" class="img-fluid object-fit-cover rounded"
                                     alt="Foto de perfil">
@@ -125,19 +141,19 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                         //banco de dados
                         require_once __DIR__ . "/../conf/db.php";
 
-                        // consulta sql
-                        $sql = "SELECT * FROM perfil2;";
-
-                        //joga no banco de dados
-                        $resultado = mysqli_query($conn,  $sql);
+                        $id = $_SESSION['id'];
+                        $sql = "SELECT * FROM perfil2 WHERE id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute([$id]);
                         ?>
 
                         <!-- laço de repetição -->
-                        <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
+                        <?php while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 
                             <h1><?= $user_data['nome'] ?></h1>
 
                             <p><?= $user_data['email'] ?></p>
+
 
                         <?php } ?>
 
@@ -165,8 +181,28 @@ include __DIR__ . "/../includes/header.php"; // include que puxa o cabeçalho da
                             style="--bs-form-switch-width: 3.5em; --bs-form-switch-height: 2em;">
                             <button class="btn btn-dark" id="toggleTheme">Dark mode</button>
                         </div>
-
                     </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- linha de sair da conta -->
+        <!-- linha que ativa o modo escuro -->
+        <div class="row mt-4">
+            <div class="card">
+                <div class="card-body d-flex">
+                    <div class="col-md-10">
+                        <h2>Logout</h2>
+                        <p>O logout permite que você encerre sua sessão com segurança, protegendo seus dados e evitando acessos não autorizados à sua conta. É uma ação rápida que garante que ninguém mais use seu usuário após você sair do sistema, especialmente em computadores compartilhados ou dispositivos públicos. Use sempre o logout ao finalizar suas atividades para manter sua experiência mais segura e controlada.</p>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-center align-items-center">
+                        <div class="form-check form-switch m-0 p-0 d-flex justify-content-center align-items-center"
+                            style="--bs-form-switch-width: 3.5em; --bs-form-switch-height: 2em;">
+                            <a class="btn btn-outline-danger w-100" href="<?= BASE_URL ?>logout.php" id="toggleTheme">Sair</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

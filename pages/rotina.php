@@ -1,23 +1,33 @@
 <!-- importando o baseurl para não dar problema nos links -->
-<?php 
-    require_once __DIR__ . "/../conf/url.php";
+<?php
+session_start();
+
+require_once __DIR__ . '/../conf/url.php';
+require_once __DIR__ . '/../conf/db.php';
+
+// /verificação de sseção
+if (!isset($_SESSION['id'])) {
+    header("location:" . "login.php");
+    exit();
+}
+
 ?>
 
 <!doctype html>
 <html lang="PT-br">
 
 <!-- head da página index -->
-<?php 
-        $title = "Rotina"; // variavel do titulo da página 
-        include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho da página
-    ?>
+<?php
+$title = "Rotina"; // variavel do titulo da página 
+include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho da página
+?>
 <!-- fim do head-->
 
 <body>
     <!-- navbar da página -->
-    <?php 
-            include  __DIR__ . "/../includes/navbarPages.php";
-        ?>
+    <?php
+    include  __DIR__ . "/../includes/navbarPages.php";
+    ?>
     <!-- fim do navbar da página -->
 
     <!-- conteudo principal da página de rotinas -->
@@ -48,7 +58,7 @@
                         </div>
                         <div class="modal-body">
                             <!-- formulario para colocar dados dentro da tabela do banco de dados -->
-                            <form action="<?=BASE_URL?>crud/rotinaCreat.php" method="POST">
+                            <form action="<?= BASE_URL ?>crud/rotinaCreat.php" method="POST">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">TITULO:</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
@@ -78,13 +88,13 @@
         </div>
 
 
-        
+
     </main>
     <!-- fim conteudo principal da página de rotinas -->
 
     <!-- roadapé da página -->
-    <?php 
-        include __DIR__ . "/../includes/footer.php"
+    <?php
+    include __DIR__ . "/../includes/footer.php"
     ?>
     <!-- fim do roadapé da página -->
 
@@ -95,7 +105,7 @@
     </script>
     <script src="../assets/js/pagesConf.js">
     </script>
-     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
+    <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
 
 </html>

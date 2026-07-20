@@ -1,6 +1,15 @@
 <?php 
-    require_once __DIR__ . "/../conf/url.php";
-    require_once __DIR__ . "/../conf/db.php";
+ session_start();
+
+require_once __DIR__ . '/../conf/url.php';
+require_once __DIR__ . '/../conf/db.php';
+
+// /verificação de sseção
+if (!isset($_SESSION['id'])) {
+    header("location:" . "login.php");
+    exit();
+}
+
 ?>
 <!doctype html>
 <html lang="pt-br">

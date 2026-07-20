@@ -1,6 +1,16 @@
 <!-- importando o baseurl para não dar problema nos links -->
 <?php
-require_once __DIR__ . "/../conf/url.php";
+session_start();
+
+require_once __DIR__ . '/../conf/url.php';
+require_once __DIR__ . '/../conf/db.php';
+
+// /verificação de sseção
+if (!isset($_SESSION['id'])) {
+    header("location:" . "login.php");
+    exit();
+}
+
 ?>
 
 <!doctype html>

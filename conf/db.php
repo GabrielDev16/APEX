@@ -1,4 +1,4 @@
-<?php 
+<?php
 // arquivo de conexão com o banco de dados DBeaver
 
 $host = "localhost";
@@ -7,14 +7,16 @@ $senha = "";
 $db = "apex";
 
 // faz conexão com o banco
+try {
 
-$conn = new mysqli($host, $user, $senha, $db);
+    $conn = new PDO(
+        "mysql:host=$host;dbname=$db;charset=utf8",
+        $user,
+        $senha
+    );
 
-// verifica se a conexão foi bem sucessedida
-if ($conn ->connect_error){
-    die("Erro na Conexão " . $conn->connect_error);
-    
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+
+    die("Erro na conexão: " . $e->getMessage());
 }
-
-// echo"Conexão realizada com sucesso!";
-?>

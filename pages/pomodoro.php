@@ -1,8 +1,16 @@
 <!-- implementação do base url para evitar erro de lunks -->
 <?php
-require_once __DIR__ . '/../conf/url.php';
+session_start();
 
+require_once __DIR__ . '/../conf/url.php';
 require_once __DIR__ . '/../conf/db.php';
+
+// /verificação de sseção
+if (!isset($_SESSION['id'])) {
+    header("location:" . "login.php");
+    exit();
+}
+
 ?>
 <!doctype html>
 <html lang="PT-br">
