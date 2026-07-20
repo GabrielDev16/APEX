@@ -70,7 +70,7 @@ body.dark .nav-link:hover{
           CARDS
 ======================= */
 
-body.dark .card{
+body.dark .card .iframe{
     background:#1e293b;
     border:1px solid #334155;
     color:#e5e7eb;
