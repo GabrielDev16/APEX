@@ -23,3 +23,22 @@ export function validaImagem(imagem){
 
     return true;
 }
+
+//função de validar campo de email login
+export function validaCampoEmail(valor, mensagem, erro){ //idelemento é o elemento html que vai exibir a mensgem de erro
+
+    
+
+    //limpa a mensagem anterior a que será exibida
+    if(elementoErro) elementoErro.textContent = "";
+
+    //verificação dos campos
+    if(valor.trim() === "" || valor.include('@')){
+        if(elementoErro){
+            elementoErro.textContent = mensagem;
+        }
+        return false;
+    }
+    
+    return true;
+}

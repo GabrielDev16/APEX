@@ -18,7 +18,7 @@ formulario.addEventListener("submit", function (e) {
     const imagemForm = document.getElementById("imagem").files[0];
 
     //validação dos campos se estão vazios
-    if (!validaCampo(nomeForm, "Campo nome Inválido")) return;
+    if (!validaCampo(nomeForm, "Campo nome Inválido" , )) return;
     
     if (!validaCampo(emailForm, "Campo Email Inválido")) return;
     

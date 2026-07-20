@@ -30,7 +30,7 @@ include __DIR__ . "/includes/header.php"; // include que puxa o cabeçalho da p�
                     <img class="img-fluid d-block mx-auto m-3" src="<?= BASE_URL ?>assets/img/Icon APEX.png" alt="Logo do Sistema" style="max-width:100px;">
 
                     <!-- formulario de login -->
-                    <form method="post" action="<?= BASE_URL ?>crud/login_valida.php">
+                    <form id="formularioLogin" method="post" action="<?= BASE_URL ?>crud/login_valida.php">
                         <div class="mb-3">
                             <label
                                 for="email"
@@ -41,8 +41,8 @@ include __DIR__ . "/includes/header.php"; // include que puxa o cabeçalho da p�
                                 name="email"
                                 id="email"
                                 aria-describedby="emailHelp"
-                                require>
-                            <div id="emailHelp" class="form-text"></div>
+                                >
+                            <div id="erro" class="form-text"></div>
                         </div>
                         <div class="mb-2">
                             <label
@@ -72,6 +72,7 @@ include __DIR__ . "/includes/header.php"; // include que puxa o cabeçalho da p�
 
     <!-- script de personalização da página -->
     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
+    <script src="<?= BASE_URL ?>assets/js/logValid.js"></script>
 
 </body>
 
