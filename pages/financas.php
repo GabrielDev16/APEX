@@ -6,18 +6,20 @@ require_once __DIR__ . '/../conf/db.php';
 
 // /verificação de sseção
 if (!isset($_SESSION['id'])) {
-    header("location:" . "login.php");
+    header("location:" . BASE_URL. "login.php");
     exit();
 }
 
 
+
+$id = $_SESSION['id'];
 $sql = "SELECT * FROM transacoes ORDER BY data_lancamento DESC, id DESC";
-$resultado = mysqli_query($conn, $sql);
+$stmt= $conn->query($sql);
 
 $entradas = 0;
 $saidas = 0;
 
-while ($row = mysqli_fetch_assoc($resultado)) {
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     if ($row['tipo'] === 'entrada') {
         $entradas += (float) $row['valor'];
     } else {
@@ -27,11 +29,14 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 
 $saldo = $entradas - $saidas;
 
-mysqli_data_seek($resultado, 0);
+mysqli_data_seek($stmt, 0);
 ?>
 <!doctype html>
 <html lang="pt-br">
-<?php $title = "Finanças"; include __DIR__ . "/../includes/header.php"; ?>
+
+<?php $title = "Finanças"; 
+include __DIR__ . "/../includes/header.php"; ?>
+
 <body>
 <?php include __DIR__ . "/../includes/navbarPages.php"; ?>
 
@@ -131,7 +136,7 @@ mysqli_data_seek($resultado, 0);
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = mysqli_fetch_assoc($resultado)) { ?>
+                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                     <tr>
                         <td><?= $row['tipo'] ?></td>
                         <td><?= $row['categoria'] ?></td>

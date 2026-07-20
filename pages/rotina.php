@@ -7,7 +7,7 @@ require_once __DIR__ . '/../conf/db.php';
 
 // /verificação de sseção
 if (!isset($_SESSION['id'])) {
-    header("location:" . "login.php");
+    header("location:" . BASE_URL. "login.php");
     exit();
 }
 
@@ -101,10 +101,9 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
-    <script src="../assets/js/pagesConf.js">
-    </script>
+    <script src="../assets/js/pagesConf.js"></script>
     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
 

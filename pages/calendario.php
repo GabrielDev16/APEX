@@ -7,7 +7,7 @@ require_once __DIR__ . '/../conf/db.php';
 
 // /verificação de sseção
 if (!isset($_SESSION['id'])) {
-    header("location:" . "login.php");
+    header("location:" . BASE_URL. "login.php");
     exit();
 }
 

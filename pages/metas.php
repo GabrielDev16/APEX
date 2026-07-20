@@ -7,7 +7,7 @@ require_once __DIR__ . '/../conf/db.php';
 
 // /verificação de sseção
 if (!isset($_SESSION['id'])) {
-    header("location:" . "login.php");
+    header("location:" . BASE_URL. "login.php");
     exit();
 }
 
@@ -43,18 +43,18 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
         <div class="mt-3">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-secondary w-100" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
+                data-bs-target="#modalMeta">
                 <i class="bi bi-plus-circle"></i> Nova Meta
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="modalMeta" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar Meta</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">teste</button>
                         </div>
                         <div class="modal-body">
                             <!-- formulario para colocar dados dentro da tabela do banco de dados -->
@@ -94,15 +94,16 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
         //conexão  com  banco
         require_once __DIR__ . ("/../conf/db.php");
 
+        $id = $_SESSION['id'];
         // consulta a tabela
         $sql = "SELECT * from metas WHERE status =0";
-
-        $resultado = mysqli_query($conn, $sql);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
         ?>
 
         <div class="row mt-4">
             <!-- laço que faz a checagem das linhas da tabela -->
-            <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
+            <?php while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="col-md-3 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
@@ -136,15 +137,16 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
         //conexão  com  banco
         require_once __DIR__ . ("/../conf/db.php");
 
+        $id = $_SESSION['id'];
         // consulta a tabela
-        $sql = "SELECT * from metas WHERE status =1";
-
-        $resultado = mysqli_query($conn, $sql);
+        $sql = "SELECT * from metas WHERE status = 1";
+        $stmt= $conn->query($sql);
+    
         ?>
 
         <div class="row mt-4">
             <!-- laço que faz a checagem das linhas da tabela -->
-            <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
+            <?php while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
 
                 <!-- card que vai exibir os dados da tabela -->
                 <div class="col-md-3 mb-4">
@@ -181,13 +183,14 @@ include __DIR__ .  "/../includes/header.php"; // include que puxa o cabeçalho d
     <!-- fim do roadapé da página -->
 
 
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
+    <script src="../assets/js/modoescuro.js"></script>
     <script type="module" src="<?= BASE_URL ?>assets/js/metasValidation.js"></script>
-    <script src="../assets/js/pagesConf.js"></script>
-    <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
+
+    
 </body>
 
 </html>

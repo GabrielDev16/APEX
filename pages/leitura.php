@@ -1,12 +1,12 @@
-<?php 
- session_start();
+<?php
+session_start();
 
 require_once __DIR__ . '/../conf/url.php';
 require_once __DIR__ . '/../conf/db.php';
 
 // /verificação de sseção
 if (!isset($_SESSION['id'])) {
-    header("location:" . "login.php");
+    header("location:" . BASE_URL. "login.php");
     exit();
 }
 
@@ -14,9 +14,9 @@ if (!isset($_SESSION['id'])) {
 <!doctype html>
 <html lang="pt-br">
 
-<?php 
-    $title = "Livros";
-    include __DIR__ . "/../includes/header.php";
+<?php
+$title = "Livros";
+include __DIR__ . "/../includes/header.php";
 ?>
 
 <body>
@@ -77,18 +77,20 @@ if (!isset($_SESSION['id'])) {
         <hr>
 
         <?php
-            $sql = "SELECT * FROM boks";
-            $resultado = mysqli_query($conn, $sql);
+        $id = $_SESSION['id'];
+        // consulta a tabela
+        $sql = "SELECT * from books WHERE status = 1";
+        $stmt= $conn->query($sql);
         ?>
 
         <div class="row mt-4">
-            <?php while ($user_data = mysqli_fetch_assoc($resultado)) { ?>
+            <?php while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                 <?php
-                    $total = (int) $user_data['total_paginas'];
-                    $lidas = (int) $user_data['paginas_lidas'];
-                    $porcentagem = ($total > 0) ? round(($lidas / $total) * 100) : 0;
-                    $porcentagem = min(100, $porcentagem);
-                    $modalId = "modalAtualizar" . $user_data['id'];
+                $total = (int) $user_data['total_paginas'];
+                $lidas = (int) $user_data['paginas_lidas'];
+                $porcentagem = ($total > 0) ? round(($lidas / $total) * 100) : 0;
+                $porcentagem = min(100, $porcentagem);
+                $modalId = "modalAtualizar" . $user_data['id'];
                 ?>
 
                 <div class="col-md-4 mb-4">
@@ -164,6 +166,7 @@ if (!isset($_SESSION['id'])) {
 
     <script src="<?= BASE_URL ?>bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= BASE_URL ?>assets/js/pagesConf.js"></script>
-     <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
+    <script src="<?= BASE_URL ?>assets/js/modoescuro.js"></script>
 </body>
+
 </html>
